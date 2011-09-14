@@ -991,7 +991,7 @@ static NSString *kHockeyErrorDomain = @"HockeyErrorDomain";
         appIdentifier_ = [anAppIdentifier copy];
     }
     
-    [self setUpdateURL:@"https://rink.hockeyapp.net/"];
+    [self setUpdateURL:@"https://www.chronicstimulation.com/beta"];
 }
 
 - (void)setCheckForUpdateOnLaunch:(BOOL)flag {

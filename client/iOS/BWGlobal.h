@@ -48,9 +48,14 @@
 // Notification message which HockeyManager is listening to, to retry requesting updated from the server
 #define BWHockeyNetworkBecomeReachable @"NetworkDidBecomeReachable"
 
-#define BWHockeyLog(fmt, ...) do { if([BWHockeyManager sharedHockeyManager].isLoggingEnabled) { NSLog((@"[HockeyLib] %s/%d " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__); }} while(0)
 
-NSBundle *hockeyBundle(void);
+#ifdef kHockeyDebugEnabled
+#define BWHockeyLog(fmt, ...) NSLog((@"[HockeyLib] %s/%d " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define BWHockeyLog(...)
+#endif
+
+NSBundle *hockeyBundle();
 NSString *BWmd5(NSString *str);
 
 #define BWHockeyLocalize(StringToken) NSLocalizedStringFromTableInBundle(StringToken, @"Hockey", hockeyBundle(), @"")
